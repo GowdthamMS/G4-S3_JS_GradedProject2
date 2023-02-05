@@ -26,45 +26,38 @@ const achievements = document.getElementById("achievements");
 
 // Will check which buttons to display based on currentResumeIndex and allResumes(filtered out on the basis of search input)
 const checkButtonsToDisplay = () => {
-  if (currentResumeIndex + 1 >= allResumes.length) 
-  {
-    nextBtn.style.visibility = "hidden";
-  } 
-  else 
-  {
-    nextBtn.style.visibility = "visible";
-  }
-  if (currentResumeIndex === 0) 
-  {
-    previousBtn.style.visibility = "hidden";
-  } 
-  else 
-  {
-    previousBtn.style.visibility = "visible";
-  }
+    if (currentResumeIndex + 1 >= allResumes.length) {
+        nextBtn.style.visibility = "hidden";
+    } else {
+        nextBtn.style.visibility = "visible";
+    }
+    if (currentResumeIndex === 0) {
+        previousBtn.style.visibility = "hidden";
+    } else {
+        previousBtn.style.visibility = "visible";
+    }
 };
 
 // Will fill the data in all the html placeholders based on currently selected resume
-const fillData = () => 
-{
-  const currentResume = allResumes[currentResumeIndex];
-  employeeName.innerText = currentResume["basics"]["name"];
-  appliedFor.innerText = currentResume["basics"]["AppliedFor"];
-  email.innerText = currentResume["basics"]["email"];
-  phone.innerText = currentResume["basics"]["phone"];
-  linkedin.href = currentResume["basics"]["profiles"]["url"];
-  technicalSkills.innerHTML = `<div>${currentResume["skills"]["keywords"].map(
+const fillData = () => {
+        const currentResume = allResumes[currentResumeIndex];
+        employeeName.innerText = currentResume["basics"]["name"];
+        appliedFor.innerText = currentResume["basics"]["AppliedFor"];
+        email.innerText = currentResume["basics"]["email"];
+        phone.innerText = currentResume["basics"]["phone"];
+        linkedin.href = currentResume["basics"]["profiles"]["url"];
+        technicalSkills.innerHTML = `<div>${currentResume["skills"]["keywords"].map(
     (keyword) => `<p>${keyword}</p>`
-  )}</div>`.replaceAll(",", "");
+  ).join('')}</div>`;
   hobbies.innerHTML = `<div>${currentResume["interests"]["hobbies"].map(
     (keyword) => `<p>${keyword}</p>`
-  )}</div>`.replaceAll(",", "");
+  ).join('')}</div>`;
   previousCompanyDetails.innerHTML = `<div>${Object.keys(
     currentResume["work"]
   ).map(
     (key) =>
       `<p class="innerDetail"><b>${key}</b>: ${currentResume["work"][key]}</p>`
-  )}</div>`.replaceAll(",", "");
+  ).join('')}</div>`;
   projectDetails.innerHTML = `<p class="innerDetail"><b>${currentResume["projects"]["name"]}</b>:${currentResume["projects"]["description"]}</p>`;
   education.innerHTML = `<ul>${Object.keys(currentResume["education"]).map(
     (education) =>
@@ -74,25 +67,22 @@ const fillData = () =>
         (eduDataKey) =>
           `<span> ${currentResume["education"][education][eduDataKey]}</span>`
       )}</li>`
-  )}</ul>`;
+  ).join('')}</ul>`;
   internship.innerHTML = `<ul>${Object.keys(currentResume["Internship"]).map(
     (key) => `<li><b>${key}</b>: ${currentResume["Internship"][key]}</li>`
-  )}</ul>`.replaceAll(",", "");
+  ).join('')}</ul>`;
   achievements.innerHTML = `<ul>${currentResume["achievements"]["Summary"].map(
     (achievement) => `<li>${achievement}</li>`
-  )}</ul>`.replaceAll(",", "");
+  ).join('')}</ul>`;
 };
 
 // will check the length of filtered out resumes based on search input and makes a decision which container to show, no results or resume
-const checkResumes = () => 
-{
-  if (allResumes.length > 0) 
-  {
+const checkResumes = () => {
+  if (allResumes.length > 0) {
     noResultContainer.style.display = "none";
     resumeContainer.style.display = "block";
-  } 
-  else 
-  {
+  }
+  else {
     noResultContainer.style.display = "flex";
     resumeContainer.style.display = "none";
   }
@@ -105,8 +95,7 @@ fetch("resources\data\data.js")
 
   // fetch("../resources/data/Data.json") // this is also working fine
   .then((response) => data.js())
-  .then((respdata) => 
-  {
+  .then((respdata) => {
     loader.style.display = "none";
     resumeData = respData;
     allResumes = resumeData["resume"];
@@ -114,8 +103,7 @@ fetch("resources\data\data.js")
     checkButtonsToDisplay();
     fillData();
   })
-  .catch((error) => 
-  {
+  .catch((error) => {
     // alert(
     //   "Page interrupted or Unable to load file from npoint. Loading the data from local."
     // );
@@ -128,19 +116,16 @@ fetch("resources\data\data.js")
   });
 
 // will filter our resumes and saves it to allResumes and checks which buttons to display
-searchBar.oninput = function (event) 
-{
+searchBar.oninput = function (event) {
   const searchInput = event.target.value;
-  if (searchInput.length > 0) 
-  {
+  if (searchInput.length > 0) {
     allResumes = resumeData["resume"].filter((resume) =>
       resume["basics"]["AppliedFor"]
         .toLowerCase()
         .includes(searchInput.toLowerCase())
     );
-  } 
-  else 
-  {
+  }
+  else {
     allResumes = resumeData["resume"];
   }
   currentResumeIndex = 0;
@@ -151,8 +136,7 @@ searchBar.oninput = function (event)
 
 // will fill the data of next resume
 // checks which buttons to display as the currentResumeIndex is changed
-const nextBtnClick = () => 
-{
+const nextBtnClick = () => {
   currentResumeIndex = currentResumeIndex + 1;
   fillData();
   checkButtonsToDisplay();
@@ -160,8 +144,7 @@ const nextBtnClick = () =>
 
 // will fill the data of previous resume
 // checks which buttons to display as the currentResumeIndex is changed
-const previousBtnClick = () => 
-{
+const previousBtnClick = () => {
   currentResumeIndex = currentResumeIndex - 1;
   fillData();
   checkButtonsToDisplay();

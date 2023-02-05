@@ -1,23 +1,19 @@
-.actions-container 
-{
+.actions-container {
     display: flex;
     justify-content: space-evenly;
     width: 100%;
 }
 
-.small-btns 
-{
+.small-btns {
     width: 200px
 }
 
-.search-input 
-{
+.search-input {
     max-width: 400px;
     margin: 8px 10px!important;
 }
 
-.resume-container
-{
+.resume-container {
     width: 90%;
     display: none;
     margin-top: 50px;
@@ -27,8 +23,7 @@
     border-radius: 0.25rem;
 }
 
-.resume-header 
-{
+.resume-header {
     background-color: rgba(210, 250, 255, 0.938);
     position: relative;
     display: flex;
@@ -40,9 +35,7 @@
     border-radius: 0.25rem;
 }
 
-
-.header-center 
-{
+.header-center {
     text-align: center;
     padding: 40px;
     display: flex;
@@ -52,87 +45,79 @@
     margin-left: 5%;
 }
 
-.candidate-image 
-{
+.candidate-image {
     width: 150px;
     height: 150px;
     border-radius: 50%;
     padding: 15px;
 }
 
-.name 
-{
+.name {
     font-weight: bold;
     font-size: 30px;
 }
 
-.position 
-{
+.position {
     font-weight: bold;
     bottom: 25px;
     position: absolute;
 }
 
-.resume-body 
-{
+.resume-body {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     background-color: #a394fa79;
 }
 
-.basics 
-{
+.basics {
     width: 23%;
     padding: 10px;
     margin: 10px;
 }
 
-.other-details 
-{
+.other-details {
     width: 67%;
     padding: 10px 10px 10px 0px;
 }
 
-p, h3, h2, h1, h4 
-{
+p,
+h3,
+h2,
+h1,
+h4 {
     margin: 0px;
     padding: 0px;
 }
 
-h2 
-{
+h2 {
     margin-bottom: 10px;
     margin-top: 10px;
 }
 
-.work-ex 
-{
+.work-ex {
     margin-top: 0px;
 }
 
-.basics 
-{
+.basics {
     text-align: right;
     background: #fff6f8;
     height: fit-content;
 }
 
-.basics .titles 
-{
+.basics .titles {
     font-weight: bold;
     font-size: 15px;
     background-color: grey;
     text-align: left;
     padding: 5px;
 }
-.innerDetail 
-{
+
+.innerDetail {
     padding: 10px 0px 10px 40px
 }
 
-.no-result 
-{
+.no-result {
     display: none;
     width: 60%;
     justify-content: center;
@@ -143,37 +128,38 @@ h2
     border: 1px solid black;
     box-shadow: 0px 0px 10px 2px #888888;
 }
-.details-container 
-{
+
+.details-container {
     align-items: center;
     justify-content: center;
     display: flex;
 }
 
-.no-result-image 
-{
+.no-result-image {
     width: 100px;
     height: 100px;
     padding-right: 40px;
 }
 
-.no-result-text 
-{
+.no-result-text {
     font-size: 30px;
 }
 
-.personal-info, .tech-skills, .hobbies 
-{
+.personal-info,
+.tech-skills,
+.hobbies {
     margin-bottom: 15px;
 }
 
-.hidden 
-{
+.hidden {
     visibility: hidden;
 }
+
+
 /*Full-width input fields */
-input[type=text], input[type=password] 
-{
+
+input[type=text],
+input[type=password] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -181,11 +167,12 @@ input[type=text], input[type=password]
     border: 1px solid #686464;
     box-sizing: border-box;
     border-radius: 0.25rem;
-  }
-  
-  /* Set a style for all buttons */
-  button 
-  {
+}
+
+
+/* Set a style for all buttons */
+
+button {
     background-color: #11c583e7;
     color: rgb(14, 13, 13);
     padding: 14px 20px;
@@ -194,7 +181,4 @@ input[type=text], input[type=password]
     cursor: pointer;
     width: 100%;
     border-radius: 0.25rem;
-  }
-  
-
-
+}
